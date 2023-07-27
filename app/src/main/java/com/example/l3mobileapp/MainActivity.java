@@ -13,10 +13,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.time.LocalDate;
 
@@ -103,6 +105,18 @@ public class MainActivity extends AppCompatActivity {
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                CheckBox cb = findViewById(R.id.checkBox);
+
+                if (!cb.isChecked()){
+                    Toast
+                            .makeText(
+                                    MainActivity.this,
+                                    "You must check the box",
+                                    Toast.LENGTH_LONG
+                            )
+                            .show();
+                    return;
+                }
                 getInputs();
             }
         });
